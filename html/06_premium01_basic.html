@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport"
+		  content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" />
+	<link type="text/css" rel="stylesheet" href="../css/reset.css">
+	<link type="text/css" rel="stylesheet" href="../css/hanwha.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<script>
+	$(function () {
+
+		var option = $('input[name="opt"]:checked').val() || 0;
+		$('#monthPay').text(100000);
+		$('#totalPay').text(100000 + Number(option));
+
+		function calcPrice() {
+
+			var inputAge = $('#ecoAge').val();
+			var selectAge = 7;
+
+			if(inputAge == '' || Number(inputAge) == 'NaN' || inputAge == 0){
+				return false;
+			}
+
+			if (Number(selectAge) + 17 > inputAge || inputAge > Number(selectAge) + 35) {
+				$('.dimmed').show();
+				$('#popup2').show();
+				$('#monthPay').text('');
+				$('#totalPay').text('');
+				return false;
+			}
+
+			option = $('input[name="opt"]:checked').val() || 0;
+			$('#monthPay').text(100,000);
+			$('#totalPay').text(100,000 + Number(option));
+		}
+
+		$('.t_b').text('남성');
+		$('.t_age').text(35);
+		$('.child1').show();
+		$('.child2').show();
+
+		$('input[name="opt"]').on('change', function () {
+			calcPrice();
+		});
+		$('input[name="child"]').on('change', function () {
+			calcPrice();
+		});
+
+		$('.btn_pop1').on('click', function () {
+			$('.dimmed').show();
+			$('#popup3').show();
+		});
+
+		$('#ecoAge').on('change', function () {
+			calcPrice();
+		});
+
+		// 팝업 닫기 이벤트
+		$('.popup .btn_close, .popup .btn_type1').on('click', function () {
+			$(this).parents('.popup').hide();
+			$('.dimmed').hide();
+		});
+	})
+</script>
+<body>
+<div> <!--   popup-->
+	<div class="popup" style="display:none;"> <!--alert 1-->
+		<div class="pop_head">
+		</div>
+		<div class="pop_bd">
+			<div class="imgbox"><img src="../image/common/pop_txt2.png"></div>
+			<a href="#" class="btn_type1 w200t20"><span class="txt_enter"></span></a><!--20190725수정-->
+		</div>
+	</div>
+	<div id="popup2" class="popup" style="display:none;"> <!--alert 2-->
+		<div class="pop_head">
+		</div>
+		<div class="pop_bd">
+			<p>자녀의 경제적 독립 나이는<br/> 00 ~ 00 세 입니다.</p><!--20190725수정-->
+			<a href="#" class="btn_type1 w200t20"><span class="txt_enter"></span></a><!--20190725수정-->
+		</div>
+	</div>
+	<div id="popup3" class="popup" style="display:none;"> <!--alert 3-->
+		<div class="pop_head">
+			<button type="button" class="btn_close"></button>
+		</div>
+		<div class="pop_bd">
+			<div class="imgbox"><img src="../image/common/pop_txt4.png"></div>
+		</div>
+	</div>
+	<div class="dimmed" style="display:none;"></div>
+</div>
+<div class="wrap">
+	<div class="scroll">
+		<div class="header">
+			<a href="05_product01.html" class="btn_back"><span class="sub_h2_06"></span></a>
+		</div>
+		<div class="premium">
+			<dl class="infodata">
+				<dt><p class="txt_customer"><span class="t_age">35</span><span class="t_be">여성</span></p></dt>
+				<dd>
+					<div class="plane">
+						<div class="databox child1" style="display:none;">
+							<input type="radio" id="child1" name="child"checked><label for="child1">자녀1(<i class="color_r">9</i>세)</label></div>
+						<div class="databox child2" style="display:none;"><input type="radio" id="child2" name="child"><label for="child2">자녀2(<i class="color_r">9</i>세)</label></div>
+						<span>의</span>
+						<span class="imgbox"><img src="../image/layout/txt_09.png"></span>
+						<span class="dp_block">경제적 독립 나이는</span>
+						<div class="dp_block">
+							<div class="databox"><input id="ecoAge" type="number"><span>세</span></div>
+							<span>입니다.</span>
+						</div>
+					</div>
+				</dd>
+				<dt><p class="txt_13"></p></dt>
+				<dd>
+					<div class="pay">
+						<span>기본 월 보험료 : </span><span id="monthPay"></span><span>원</span>
+					</div>
+					<div class="imgbox mt25">
+						<a href="#" class="btn_pop1"></a>
+						<img src="../image/layout/txt_h3_2.png">
+					</div>
+					<ul class="option">
+						<li><!--20190812 수정-->
+							<div class="answer">
+								<input type="radio" id="opt1" name="opt" value="10000"><label for="opt1">자녀생활비 암보장특약</label> 
+								<span class="cost">: 10,000원</span>
+							</div>
+							<div class="sub_txt">
+								<p>암 진단시 매월 생활비 100만원<sup>주)</sup> (5년지급)</p>
+								<p>주) 가입금액 2천만원 기준</p>
+							</div>
+						</li>
+						<li class="no">
+							<div class="answer">
+								<input type="radio" id="opt2" name="opt" value="0"><label for="opt2">지금은 필요 없어요</label>
+							</div>
+						</li>
+					</ul><!--20190812 수정 end-->
+					<div class="total mt25">
+						<span>총 월 보험료 : </span>
+						<span class="cost" id="totalPay"></span><span>원</span>
+					</div>
+					<div class="imgbox mt15">
+						<img src="../image/layout/txt_h3_3.png">
+					</div>
+				</dd>
+			</dl>
+			<div class="imgbox mt30">
+				<img src="../image/layout/warn2_americano.png">
+			</div>
+			<button type="button" class="btn_type3"><span class="kakao"></span></button>
+			<a href="08_consult1.html" class="btn_type2 mauto"><span class="btn_txt4"></span></a>
+			
+			<!-- 20190819_성우경_수정 --S-->
+			<div class="insurance_info">
+				<p>
+					이 보험계약은 예금자보호법에 따라 예금보험공사가 보호하되, 보호한도는 
+					본 보험회사에 있는 귀하의 모든 예금보험대상 금융상품의 해지환급금(또는 
+					만기 시 보험금이나 사고보험금)에 기타 지급금을 합하여 1인당‘최고 
+					5천만원’이며 5천만원을 초과하는 나머지 금액은 보호하지 않습니다. 
+					또한, 보험계약자 및 보험료 납부자가 법인이면 보호되지 않습니다. 기존 
+					계약 해지 후 신계약 체결 시 보험인수가 거절되거나 보험료가 인상되는 등 
+					보장내용이 달라질 수 있습니다. 
+					<!-- 20190819_성우경_수정 --S-->
+					암보장개시일은 계약일로부터 90일이 지난날의 다음날로 하며, 경과기간 1년내 지급사유 발생시 지급금액의 50% 를 지급합니다.
+					<!-- 20190819_성우경_수정 --E--> 
+					사망시 보험금의 경우 고의적 사고 및 2년 이내 자살의 경우 지급이 제한
+					됩니다. 자세한 상품 내용은 약관 및 상품설명서를 참고하시기 바랍니다. 
+					지급 경품이 3만원을 초과하지 않습니다. 
+				</p>
+			</div>
+			<!-- 20190819_성우경_수정 --E-->
+		</div>
+	</div>
+</div>
+</body>
+</html>

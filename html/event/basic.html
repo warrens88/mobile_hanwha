@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport"
+		  content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" />
+	<link type="text/css" rel="stylesheet" href="../../css/reset.css">
+	<link type="text/css" rel="stylesheet" href="../../css/hanwha.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<script>
+	$(function () {
+		$('.btn_open').on('click', function(){
+
+		var $this = $(this).parents('.middle');
+		var isOn = $this.hasClass('on');
+
+		if(isOn){
+			$this.removeClass('on');
+		}else{
+			$this.addClass('on');
+		}
+
+		});
+	
+	})
+</script>
+<body>
+<div class="wrap">
+	<div class="scroll">
+		<form id="form" method="get" >
+			<div class="imgbox">
+				<img src="../../image/event/event1.png">
+			</div>
+			<div class="premium mt25">
+				<div class="inputdata event">
+					<input type="text" placeholder="이름" class="color_br">
+					<!-- 190819_성우경_수정 -- S -->
+					<div class="phone_number">
+						<select>
+							<option></option>
+						</select>
+						<input type="text">
+						<input type="text">
+					</div>
+					<!-- 190819_성우경_수정 -- E -->
+				</div>
+				<p class="e_t14">* 입력한 정보는 보험료 조회 이벤트에 활용됩니다.</p>
+			</div>
+			
+			<ul class="benefit ty3">
+				<li class="middle">
+					<div class="head">
+						<h3>개인정보 취급/제공 이용약관 동의</h3>
+						<a href="#" class="btn_open"></a>
+					</div>
+					<!-- 20190819_성우경_수정 --S-->
+					<div class="view">
+						<h4>개인정보 취급/제공 이용약관 동의 수집 · 이용 및 제공 동의서</h4>
+						<p class="mt5">개인정보 취급/제공 수신 및 마케팅 활용에 동의하신 고객님께서는 한화생명 에서 제공하는
+							이벤트, 경품 등에 관한 다양한 정보를 받으실 수 있습니다. 귀하는 개인정보 수집 · 이용에
+							동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 해당 서비스 제공이 제한될 수
+							있습니다.</p>
+						<h5 class="mt20">개인정보 수집 · 이용 내역</h5>
+						<p class="ti16 mt5">- 개인정보 수집 목적 : 최신보험상품 안내, 이벤트 초청, 잠재고객관리, 통계분석 자료활용</p>
+						<p class="ti16">- 수집 항목 : 이름, 휴대폰 번호</p>
+						<p class="ti16">- 보유기간 : 수집일로부터 1년</p>
+
+						<h5 class="mt20">개인정보 제3자 제공 내역</h5>
+						<p class="ti16 mt5">- 한화생명의 위탁을 받아 (주)유달리커뮤니케이션즈에서 이벤트운영 및 관리를 진행합니다. 경품 수령 및 신원 확인을 위해 고객님의 이름 및 휴대폰 번호가 전달될 예정입니다.</p>
+						<p class="ti16">- 제공받는 자 : (주)유달리커뮤니케이션즈</p>
+						<p class="ti16">- 제공 목적 : 상품설계 후 경품제공</p>
+						<p class="ti16">- 제공 항목 : 이름, 휴대폰 번호</p>
+						<p class="ti16">- 보유기간 : 경품제공 후 3개월</p>
+					</div>
+					<!-- 20190819_성우경_수정 --E-->
+					<div class="checkbox">
+						<input type="checkbox" id="agree" name="agree"><label for="agree">동의함</label>
+					</div>
+				</li>
+			</ul>
+			<a href="#" class="btn_type1 round w200t25"><span class="btn_event"></span></a>
+			<div class="notice">
+				<h3>※ 이벤트 참여 시 꼭 확인하세요!</h3>
+				<p class="ti15">- 본 이벤트는 한화생명 초보 부모를 위한 보장 보험 상품의 보험료를
+					   조회하신 고객님을 대상으로 진행되는 이벤트 입니다. </p>
+				<p class="ti15">- 본 이벤트는 사정에 따라 사전 안내없이 변경 및 취소될 수 있습니다.</p>
+				<p class="ti15">- 본 이벤트 기프트콘 증정은 1인 1회에 한해서 증정됩니다.</p>
+				<p class="ti15">- 당첨된 경품은 신청 시 입력된 휴대폰번호로 SMS발송  드릴 예정이며,
+					   잘못된 연락처 및 개인정보 취급/제공 미동의 시 당첨 대상에서 제외
+					   됩니다.
+					</p>
+			</div>
+		</form>
+		
+	</div>
+</div>
+</body>
+</html>

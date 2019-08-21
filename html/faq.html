@@ -1,0 +1,467 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" />
+	<link type="text/css" rel="stylesheet" href="../css/reset.css">
+	<link type="text/css" rel="stylesheet" href="../css/hanwha.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<script>
+	$(function(){
+
+		function controlOnClass(cls, $this, isNotToggle){
+			var isOn = $this.hasClass('on');
+			$('.' + cls ).removeClass('on');
+
+			if(!isOn || isNotToggle) {
+				$this.addClass('on');
+			}
+		}
+
+		// 처음 페이지에 오면 10개만 보임
+		var VIEW_COUNT = 10;
+
+		// 초기 페이징 설정
+		$.each($('.tab_conts li'), function(index, tab) {
+
+			// 데이터가 10개 이하면 더보기 버튼 안보임
+			if($(tab).find('.faq').length <= 10){
+			 $(tab).find('.mauto').hide();
+			}
+			// 10개 이하만 보이도록 숨김처리
+			$.each($(tab).find('.faq'), function (index, faq) {
+				if(index >= 10){
+					$(faq).hide();
+				}
+			});
+		});
+
+		// 더보기 클릭 이벤트
+		$('.mauto').on('click', function(){
+			var $li = $(this).parents('li');
+
+
+			var SHOW_COUNT = 10; // 더보기 클릭시 몇개씩 더 보여줄것인지
+			var count = 0;
+			var lastIndex = 0;	 // 더보기를 끝내고 인덱스값(보여줄 데이터가 더 남았는지 확인용)
+
+			// 더보기 클릭시 10개 더 show 처리
+			$.each($li.find('.faq'), function(index, faq){
+				var $faq = $(faq);
+				if(!$faq.is(':visible') && count < SHOW_COUNT){
+					$faq.show();
+					lastIndex = index;
+					count++;
+				}
+			});
+
+			// 보여줄 항목이 더 이상 없으면 더보기 버튼 hide 처리
+			if($li.find('.faq').length == lastIndex + 1){
+				$(this).hide();
+			}
+
+		});
+
+		// 상단 탭 클릭 이벤트
+		$('.tab li').on('click', function(){
+			controlOnClass('tab li', $(this), true);
+
+			$('.tab_conts li').hide();
+			$('.tab_conts li').eq($(this).index()).show();
+		});
+
+		// 리스트 항목 토글 이벤트
+		$('.faq').on('click', function(){
+			controlOnClass('faq', $(this));
+		});
+
+		$('.btn_back').on('click', function(){
+			history.back();
+		})
+	})
+</script>
+<body>
+<div style="display:none;"> <!-- popup-->
+	<div class="popup">
+		<div class="pop_head">
+			<button type="button" class="btn_close"></button>
+		</div>
+		<div class="pop_bd">
+			<div class="imgbox"><img src="../image/common/pop_txt1.png"></div>
+			<a href="#" class="btn_type1 w200t20"><span class="txt_enter"></span></a>
+		</div>
+	</div>
+	<div class="dimmed"></div>
+</div>
+<div class="wrap">
+	<div class="scroll">
+		<div class="header">
+			<a href="#" class="btn_back"><span class="sub_h2_08"></span></a>
+		</div>
+		<div class="space">
+			<ul class="tab">
+				<li class="on"><a href="#">전체</a></li>
+				<li><a href="#">보험가입</a></li>
+				<li><a href="#">상품</a></li>
+				<li><a href="#">고객센터</a></li>
+			</ul>
+			<ul class="tab_conts">
+				<li id="tab1">
+					<div class="faq on">
+						<div class="head"><a href="#">Q01. 보험가입시 알릴의무사항</a></div>
+						<div class="ans">
+							<p>보험계약 청약시(진단계약의 경우 건강진단시 포함) 계약자 또는 피보험자가 청약서에 질문한 사항에 대하여 알고있는 사실을 반드시 사실대로 알려야 할 의무를
+								말합니다.</p>
+							<p>계약 전 알릴의무사항은 의적고지, 직업고지, 운전고지, 기타고지(위험한 취미 등)가 있습니다.</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 가입지점 또는 담당FP를 통해 확인하실 수 있습니다.</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q02. 보험가입시 알릴의무사항 위반시</a></div>
+						<div class="ans">
+							<p>계약 전 알릴의무사항을 사실과 다르게 고지한 경우 회사가 별도로 정하는 방법에 따라 계약을 해지하거나 보장을 제한할 수 있습니다.</p>
+							<p class="mt15 ti17">▶ 계약을 해지하였을 때에는 해지환급금을 드리며 보장을 제한하였을 때에는 보험료, 보험가입금액 등이 조정될 수 있습니다.</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 콜센터(☎ 1588-6363)로 연락주시기 바랍니다.(평일 09:00~18:00)</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q03. 보험 계약관계자의 정의</a></div>
+						<div class="ans">
+							<p>계약관계자는 보험계약의 관련된 사람으로 보험계약자, 피보험자, 수익자를 말하며 자세한 내용은 아래와 같습니다. </p>
+							<p class="mt15 ti17">▶ 계약자 : 회사와 계약을 체결하고 보험료를 납입할 의무를 지는 사람을 말합니다.</p>
+							<p class="ti17">▶ 피보험자 : 보험사고의 대상이 되는 사람을 말합니다.</p>
+							<p class="ti17">▶ 수익자 : 보험금 지급사유가 발생시 회사에 보험금을 청구하여 받을 수 있는 사람을 말합니다. (입원·장해수익자, 만기시수익자,
+								사망시수익자)</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 콜센터(☎ 1588-6363)로 연락주시기 바랍니다.(평일 09:00~18:00)</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q04. 외국인 보험가입 가능여부</a></div>
+						<div class="ans">
+							<p>아래의 가입조건을 모두 충족할 경우 외국인도 보험에 가입할 수 있습니다.</p>
+							<p class="mt15 ti17">▶ 가입조건</p>
+							<p class="ti34">① 대한민국에 주소를 둔 자</p>
+							<p class="ti34">② 약관 및 청약내용을 이해할 수 있는 한국어 능력을 가진 자</p>
+							<p class="ti34">③ 출입국관리법상 적법하게 체류 및 거주하고 있는 자</p>
+							<p class="ti34">④ 국내에 3개월 이상 체류한 자</p>
+							<p class="mt15 ti17">▶ 위 조건 충족시 영주권자 및 이중국적자도 가입 가능합니다.</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 가입지점 또는 담당FP를 통해 확인할 수 있습니다.</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q05. 임신중 보험가입 가능여부</a></div>
+						<div class="ans">
+							<p>임신중에도 보험에 가입할 수 있습니다.<br/>
+								단, 반드시 임신사실을 알려야 하며 과거 제왕절개 등에 대한 내용이 고지된 경우 제왕절개에 대해 부담보가 설정될 수 있습니다. </p>
+							<p class="mt15 ti17">▶가입 가능여부는 다른 계약과 동일하게 심사 후 결정됩니다.</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 가입지점 또는 담당FP를 통해 확인할 수 있습니다.</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q06. 보험가입 취소(청약철회 신청)</a></div>
+						<div class="ans">
+							<p>계약자는 청약일(제 1회 보험료납입한 날)로부터 30일 이내 보험가입을 취소(청약철회)할 수 있으며 신청방법은 아래와 같습니다.</p>
+							<p class="mt15 ti17">① 전화신청 : 계약자가 콜센터를 통해 신청</p>
+							<p class="ti17">② 인터넷창구 : 마이페이지 > 보험 > 보험청약 조회/철회</p>
+							<p class="ti17">② 인터넷창구 : 마이페이지 > 보험 > 보험청약 조회/철회</p>
+							<p class="ti17">③ 모바일센터 : 계약관리 > 보험청약 조회/철회 </p>
+							<p class="ti17">④ 방문신청 : 계약자가 신분증 지참 후 가까운 고객센터 방문(평일 09:00~15:30)</p>
+							<p class="ti17">⑤ 우편 : 제 1회 보험료영수증 하단 또는 청약서부본 뒷면에 청약철회신청서를 작성하여 신청서상 기재된 주소지로 등기발송하면 신청
+								가능합니다.
+								신청일자는 우체국 소인일자(우체국 등기접수일)를 기준으로 합니다.</p>
+							<p class="mt15 ti17">▶ 은행에서 가입한 방카슈랑스상품일 경우 청약일로부터 2영업일 이후 청약철회 신청이 가능합니다.
+								단, 가입한 은행에서는 청약일부터 처리 가능합니다.</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 콜센터(☎ 1588-6363)로 연락주시기 바랍니다.(평일 09:00~18:00)</p>
+							<a href="https://m.hanwhalife.com/mobile/customerCenter/branch/MCU_CR00000_W10000.do" target="_blank" class="btn_link">고객센터
+								바로가기</a>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q07. 보험 품질보증제도</a></div>
+						<div class="ans">
+							<p>품질보증제도는 3대 기본지키기가 이행되지 않았을 경우 신청할 수 있습니다.<br/>
+								3대 기본지키기란 ① 자필서명 이행 ② 약관교부 및 상품의 주요내용 설명 ③ 청약서부본 및 보험료영수증 전달입니다.<br/>
+								신청방법은 가입지점으로 상담 후 계약자가 신분증을 지참하여 가까운 고객센터로 방문하시면 됩니다.(평일09:00~15:30)</p>
+							<p class="mt15 ti17">▶ 계약이 성립한 날로부터 3개월이내 신청 가능하며 3개월 해당일이 휴일인 경우 익영업일로 순연됩니다.</p>
+
+							<p class="mt25 ti17">※ 기타 자세한 내용은 콜센터(☎ 1588-6363)로 연락주시기 바랍니다.(평일 09:00~18:00)</p>
+							<a href="https://m.hanwhalife.com/mobile/customerCenter/branch/MCU_CR00000_W10000.do" target="_blank" class="btn_link">고객센터
+								바로가기</a>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q08. 청약철회 후 취소</a></div>
+						<div class="ans">
+							<p>보험상품을 청약한 가입지점 또는 담당FP를 통해 청약철회 후 취소 가능여부를 확인할 수 있습니다.</p>
+						</div>
+					</div> <!--end 보헙가입-->
+					<div class="faq">
+						<div class="head"><a href="#">Q09. 계약자</a></div>
+						<div class="ans">
+							<p>회사와 계약을 체결하고 보험료 납입의무를 지는 사람</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q10. 피보험자</a></div>
+						<div class="ans">
+							<p>보험사고 발생의 대상이 되는 사람</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q11. 보험수익자</a></div>
+						<div class="ans">
+							<p>보험사고 발생시 보험금 청구권을 갖는 사람</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q12. 보험기간</a></div>
+						<div class="ans">
+							<p>보험기간은 계약에 따라 보장을 받는 기간으로, 아래와 같이 선택 가능합니다.<br/>
+								보험기간이 길수록 보장받는 기간이 늘어나 보험료가 비싸집니다.</p>
+							<p class="mt15 ti17">① 자녀든든생활비보장보험 : 17년~35년, 1년 단위 선택</p>
+							<p class=" ti17">② 안심UP건강보험 : 70세, 80세, 100만기 중 선택</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q13. 납입기간</a></div>
+						<div class="ans">
+							<p>보험료를 납입하는 기간으로, 아래와 같이 선택 가능합니다.<br/>
+								납입기간이 길수록 매월 납입하는 보험료는 저렴해 집니다.</p>
+							<p class="mt15 ti17">① 자녀든든생활비보장보험 : 10년, 15년, 20년, 전기납 중 선택</p>
+							<p class=" ti17">② 안심UP건강보험 : 10년, 15년, 20년 중 선택</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q14. 보험금</a></div>
+						<div class="ans">
+							<p>피보험자가 사망, 장해, 진단 등 약관의 보험금지급사유 발생시 회사가 보험수익자에게 지급하는 금액</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q15. 보험료</a></div>
+						<div class="ans">
+							<p>계약에 다른 보장을 받기 위하여 계약자가 회사에 납입하는 금액</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q16. 가입금액</a></div>
+						<div class="ans">
+							<p>보험금, 보험료 등을 산정하는 기준이 되는 금액</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q17. 주계약</a></div>
+						<div class="ans">
+							<p>주된 보험계약</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q18. 특약</a></div>
+						<div class="ans">
+							<p>주계약에 부가하는 보험계약</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q19. 고도장해</a></div>
+						<div class="ans">
+							<p>재해 또는 재해 이외의 동일한 원인으로 여러 신체부위의 장해지급률을 더하여 80% 이상인 장해상태가 되는 것으로,
+								장해지급률은 약관 장해분류표의 판정기준에 따릅니다.</p>
+						</div>
+					</div><!--상품-->
+					<div class="faq"> <!--고객센터-->
+						<div class="head"><a href="#">Q20. 고객센터 위치 및 업무시간</a></div>
+						<div class="ans">
+							<p>고객센터 업무시간은 평일 09:00~15:30까지 이며 가까운 고객센터 위치는 홈페이지 또는 콜센터를 통해 확인 가능합니다. </p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 콜센터(☎ 1588-6363)로 연락주시기 바랍니다.(평일 09:00~18:00)</p>
+							<a href="https://m.hanwhalife.com/mobile/customerCenter/branch/MCU_CR00000_W10000.do" target="_blank" class="btn_link">고객센터
+								바로가기</a>
+						</div>
+					</div>
+					<button type="button" class="btn_type2 mauto"><span class="btn_more"></span></button>
+				</li>
+				<li id="tab2" style="display:none">
+					<div class="faq on">
+						<div class="head"><a href="#">Q01. 보험가입시 알릴의무사항</a></div>
+						<div class="ans">
+							<p>보험계약 청약시(진단계약의 경우 건강진단시 포함) 계약자 또는 피보험자가 청약서에 질문한 사항에 대하여 알고있는 사실을 반드시 사실대로 알려야 할 의무를
+								말합니다.</p>
+							<p>계약 전 알릴의무사항은 의적고지, 직업고지, 운전고지, 기타고지(위험한 취미 등)가 있습니다.</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 가입지점 또는 담당FP를 통해 확인하실 수 있습니다.</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q02. 보험가입시 알릴의무사항 위반시</a></div>
+						<div class="ans">
+							<p>계약 전 알릴의무사항을 사실과 다르게 고지한 경우 회사가 별도로 정하는 방법에 따라 계약을 해지하거나 보장을 제한할 수 있습니다.</p>
+							<p class="mt15 ti17">▶ 계약을 해지하였을 때에는 해지환급금을 드리며 보장을 제한하였을 때에는 보험료, 보험가입금액 등이 조정될 수 있습니다.</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 콜센터(☎ 1588-6363)로 연락주시기 바랍니다.(평일 09:00~18:00)</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q03. 보험 계약관계자의 정의</a></div>
+						<div class="ans">
+							<p>계약관계자는 보험계약의 관련된 사람으로 보험계약자, 피보험자, 수익자를 말하며 자세한 내용은 아래와 같습니다. </p>
+							<p class="mt15 ti17">▶ 계약자 : 회사와 계약을 체결하고 보험료를 납입할 의무를 지는 사람을 말합니다.</p>
+							<p class="ti17">▶ 피보험자 : 보험사고의 대상이 되는 사람을 말합니다.</p>
+							<p class="ti17">▶ 수익자 : 보험금 지급사유가 발생시 회사에 보험금을 청구하여 받을 수 있는 사람을 말합니다. (입원·장해수익자, 만기시수익자,
+								사망시수익자)</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 콜센터(☎ 1588-6363)로 연락주시기 바랍니다.(평일 09:00~18:00)</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q04. 외국인 보험가입 가능여부</a></div>
+						<div class="ans">
+							<p>아래의 가입조건을 모두 충족할 경우 외국인도 보험에 가입할 수 있습니다.</p>
+							<p class="mt15 ti17">▶ 가입조건</p>
+							<p class="ti34">① 대한민국에 주소를 둔 자</p>
+							<p class="ti34">② 약관 및 청약내용을 이해할 수 있는 한국어 능력을 가진 자</p>
+							<p class="ti34">③ 출입국관리법상 적법하게 체류 및 거주하고 있는 자</p>
+							<p class="ti34">④ 국내에 3개월 이상 체류한 자</p>
+							<p class="mt15 ti17">▶ 위 조건 충족시 영주권자 및 이중국적자도 가입 가능합니다.</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 가입지점 또는 담당FP를 통해 확인할 수 있습니다.</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q05. 임신중 보험가입 가능여부</a></div>
+						<div class="ans">
+							<p>임신중에도 보험에 가입할 수 있습니다.<br/>
+								단, 반드시 임신사실을 알려야 하며 과거 제왕절개 등에 대한 내용이 고지된 경우 제왕절개에 대해 부담보가 설정될 수 있습니다. </p>
+							<p class="mt15 ti17">▶가입 가능여부는 다른 계약과 동일하게 심사 후 결정됩니다.</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 가입지점 또는 담당FP를 통해 확인할 수 있습니다.</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q06. 보험가입 취소(청약철회 신청)</a></div>
+						<div class="ans">
+							<p>계약자는 청약일(제 1회 보험료납입한 날)로부터 30일 이내 보험가입을 취소(청약철회)할 수 있으며 신청방법은 아래와 같습니다.</p>
+							<p class="mt15 ti17">① 전화신청 : 계약자가 콜센터를 통해 신청</p>
+							<p class="ti17">② 인터넷창구 : 마이페이지 > 보험 > 보험청약 조회/철회</p>
+							<p class="ti17">② 인터넷창구 : 마이페이지 > 보험 > 보험청약 조회/철회</p>
+							<p class="ti17">③ 모바일센터 : 계약관리 > 보험청약 조회/철회 </p>
+							<p class="ti17">④ 방문신청 : 계약자가 신분증 지참 후 가까운 고객센터 방문(평일 09:00~15:30)</p>
+							<p class="ti17">⑤ 우편 : 제 1회 보험료영수증 하단 또는 청약서부본 뒷면에 청약철회신청서를 작성하여 신청서상 기재된 주소지로 등기발송하면 신청
+								가능합니다.
+								신청일자는 우체국 소인일자(우체국 등기접수일)를 기준으로 합니다.</p>
+							<p class="mt15 ti17">▶ 은행에서 가입한 방카슈랑스상품일 경우 청약일로부터 2영업일 이후 청약철회 신청이 가능합니다.
+								단, 가입한 은행에서는 청약일부터 처리 가능합니다.</p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 콜센터(☎ 1588-6363)로 연락주시기 바랍니다.(평일 09:00~18:00)</p>
+							<a href="https://m.hanwhalife.com/mobile/customerCenter/branch/MCU_CR00000_W10000.do" target="_blank" class="btn_link">고객센터
+								바로가기</a>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q07. 보험 품질보증제도</a></div>
+						<div class="ans">
+							<p>품질보증제도는 3대 기본지키기가 이행되지 않았을 경우 신청할 수 있습니다.<br/>
+								3대 기본지키기란 ① 자필서명 이행 ② 약관교부 및 상품의 주요내용 설명 ③ 청약서부본 및 보험료영수증 전달입니다.<br/>
+								신청방법은 가입지점으로 상담 후 계약자가 신분증을 지참하여 가까운 고객센터로 방문하시면 됩니다.(평일09:00~15:30)</p>
+							<p class="mt15 ti17">▶ 계약이 성립한 날로부터 3개월이내 신청 가능하며 3개월 해당일이 휴일인 경우 익영업일로 순연됩니다.</p>
+
+							<p class="mt25 ti17">※ 기타 자세한 내용은 콜센터(☎ 1588-6363)로 연락주시기 바랍니다.(평일 09:00~18:00)</p>
+							<a href="https://m.hanwhalife.com/mobile/customerCenter/branch/MCU_CR00000_W10000.do" target="_blank" class="btn_link">고객센터
+								바로가기</a>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q08. 청약철회 후 취소</a></div>
+						<div class="ans">
+							<p>보험상품을 청약한 가입지점 또는 담당FP를 통해 청약철회 후 취소 가능여부를 확인할 수 있습니다.</p>
+						</div>
+					</div>
+				</li>
+				<li id="tab3" style="display:none;"><!--상품-->
+					<div class="faq on">
+						<div class="head"><a href="#">Q01. 계약자</a></div>
+						<div class="ans">
+							<p>회사와 계약을 체결하고 보험료 납입의무를 지는 사람</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q02. 피보험자</a></div>
+						<div class="ans">
+							<p>보험사고 발생의 대상이 되는 사람</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q03. 보험수익자</a></div>
+						<div class="ans">
+							<p>보험사고 발생시 보험금 청구권을 갖는 사람</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q04. 보험기간</a></div>
+						<div class="ans">
+							<p>보험기간은 계약에 따라 보장을 받는 기간으로, 아래와 같이 선택 가능합니다.<br/>
+								보험기간이 길수록 보장받는 기간이 늘어나 보험료가 비싸집니다.</p>
+							<p class="mt15 ti17">① 자녀생활비보장형 : 17년~35년, 1년 단위 선택</p>
+							<p class=" ti17">② 알아서보장UP형 : 70세, 80세, 100만기 중 선택</p>
+							<p class=" ti17">※ 성별, 나이별, 납입기간별 보험기간 상이</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q05. 납입기간</a></div>
+						<div class="ans">
+							<p>보험료를 납입하는 기간으로, 아래와 같이 선택 가능합니다.<br/>
+								납입기간이 길수록 매월 납입하는 보험료는 저렴해 집니다.</p>
+							<p class="mt15 ti17">① 자녀생활비보장형 : 10년, 15년, 20년, 전기납 중 선택</p>
+							<p class=" ti17">② 알아서보장UP형 : 10년, 15년, 20년 중 선택</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q06. 보험금</a></div>
+						<div class="ans">
+							<p>피보험자가 사망, 장해, 진단 등 약관의 보험금지급사유 발생시 회사가 보험수익자에게 지급하는 금액</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q07. 보험료</a></div>
+						<div class="ans">
+							<p>계약에 다른 보장을 받기 위하여 계약자가 회사에 납입하는 금액</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q08. 가입금액</a></div>
+						<div class="ans">
+							<p>보험금, 보험료 등을 산정하는 기준이 되는 금액</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q09. 주계약</a></div>
+						<div class="ans">
+							<p>주된 보험계약</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q10. 특약</a></div>
+						<div class="ans">
+							<p>주계약에 부가하는 보험계약</p>
+						</div>
+					</div>
+					<div class="faq">
+						<div class="head"><a href="#">Q11. 고도장해</a></div>
+						<div class="ans">
+							<p>재해 또는 재해 이외의 동일한 원인으로 여러 신체부위의 장해지급률을 더하여 80% 이상인 장해상태가 되는 것으로,
+								장해지급률은 약관 장해분류표의 판정기준에 따릅니다.</p>
+						</div>
+					</div>
+				</li>
+				<li id="tab4" style="display:none;"><!--고객센터-->
+					<div class="faq on">
+						<div class="head"><a href="#">Q01. 고객센터 위치 및 업무시간</a></div>
+						<div class="ans">
+							<p>고객센터 업무시간은 평일 09:00~15:30까지 이며 가까운 고객센터 위치는 홈페이지 또는 콜센터를 통해 확인 가능합니다. </p>
+							<p class="mt25 ti17">※ 기타 자세한 내용은 콜센터(☎ 1588-6363)로 연락주시기 바랍니다.(평일 09:00~18:00)</p>
+							<a href="https://m.hanwhalife.com/mobile/customerCenter/branch/MCU_CR00000_W10000.do" target="_blank" class="btn_link">고객센터
+								바로가기</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>

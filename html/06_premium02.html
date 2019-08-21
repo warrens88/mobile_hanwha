@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport"
+		  content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" />
+	<link type="text/css" rel="stylesheet" href="../css/reset.css">
+	<link type="text/css" rel="stylesheet" href="../css/hanwha.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<script>
+	$(function () {
+
+		// 팝업 닫기 이벤트
+		$('.popup .btn_close, .popup .btn_type1 ').on('click', function () {
+			$(this).parents('.popup').hide();
+			$('.dimmed').hide();
+		});
+	})
+</script>
+<body>
+<div class="wrap">
+	<div class="scroll">
+		<div class="header">
+			<a href="05_product02.html" class="btn_back"><span class="sub_h2_06"></span></a>
+		</div>
+		<div class="premium">
+			<dl class="infodata">
+				<dt><p class="txt_customer"><span class="t_age">35</span><span class="t_be">여성</span></p></dt>
+				<dd>
+					<div class="plane">
+						<span>나는</span>
+						<div class="databox"><input type="radio" id="age1" name="age" value="70"><label
+							for="age1">70세</label></div>
+						<div class="databox"><input type="radio" id="age2" name="age" value="80"><label
+							for="age2">80세</label></div>
+						<div class="databox"><input type="radio" id="age3" name="age" value="90"><label
+							for="age3">100세</label></div>
+						<span>까지 보장이 필요해요</span>
+					</div>
+				</dd>
+				<dt><p class="txt_14"></p></dt>
+				<dd>
+					<div class="pay">
+						<span>기본 월 보험료 : </span><span>100,000원</span>
+					</div>
+				</dd>
+			</dl>
+			<div class="imgbox mt30">
+				<img src="../image/layout/warn2.png">
+			</div>
+			<button type="button" class="btn_type3"><span class="kakao"></span></button>
+			<a href="08_consult1.html" class="btn_type2 mauto"><span class="btn_txt4"></span></a>
+		</div>
+	</div>
+</div>
+</body>
+</html>

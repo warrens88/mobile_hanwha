@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport"
+		  content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" />
+	<link type="text/css" rel="stylesheet" href="../css/reset.css">
+	<link type="text/css" rel="stylesheet" href="../css/hanwha.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="../css/swiper.css">
+	<script src="../js/swiper.js"></script>
+
+</head>
+<script>
+	$(function () {
+
+		var mySwiper = new Swiper ('.swiper-container', {
+			// Optional parameters
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				bulletElement:'a'
+			},
+			loop: true,
+			autoHeight:true
+		});
+/*
+		mySwiper.on('', function () {
+			alert("ㅇㅇ");
+
+		});*/
+
+		$('li .btn_open').on('click',function(){
+
+			var $li = $(this).parents('li');
+			if($li.hasClass('on')){
+				$li.removeClass('on');
+			}else{
+				$li.addClass('on');
+			}
+		});
+		$('.pop_detail').on('click', function () {
+			$('.dimmed').show();
+			$('#popup5').show();
+		});
+		// 팝업 닫기 이벤트
+		$('.popup .btn_close, .popup .btn_type1').on('click', function () {
+			$(this).parents('.popup').hide();
+			$('.dimmed').hide();
+		});
+	})
+</script>
+<body>
+<div > <!-- popup-->
+	<div id="popup5" class="popup" style="display:none;">
+		<div class="pop_head">
+			<h2 class="pop_h2_1"></h2>
+			<button type="button" class="btn_close"></button>
+		</div>
+		<div class="pop_bd">
+			<div class="imgbox"><img src="../image/common/pop_txt5.png"></div>
+			<a href="#" class="btn_type1 w200t20"><span class="txt_enter"></span></a>
+		</div>
+	</div>
+	<div class="dimmed" style="display:none;"></div>
+</div>
+<a href="faq.html" class="btn_faq"></a>
+<div class="wrap">
+	<div class="scroll">
+		<div class="header">
+			<a href="main.html" class="btn_back"><span class="sub_h2_03"></span></a>
+		</div>
+		<div class="rolling swiper-container">
+			<ul class="roll_banner swiper-wrapper">
+				<li class="swiper-slide">
+					<div class="imgbox">
+						<img src="../image/layout/r4.png">
+					</div>
+				</li>
+				<li class="noline swiper-slide">
+					<div class="imgbox">
+						<img src="../image/layout/r5.png">
+					</div>
+				</li>
+			
+			</ul>
+			<div class="locate">
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<div class="age">
+			<div class="imgbox">
+				<a href="#" class="pop_detail"></a>
+				<img src="../image/layout/txt_08.png">
+			</div>
+		</div>
+		<div class="imgbox mt25">
+			<img src="../image/layout/txt_h3_1.png">
+		</div>
+		<ul class="benefit">
+			<li>
+				<div class="head">
+					<span class="imgbox"><img src="../image/layout/txt_10.png"></span>
+					<a href="#" class="btn_open"></a>
+				</div>
+				<div class="view imgbox">
+					<img src="../image/layout/benefit04.png">
+					<img src="../image/layout/benefit05_1.png" class="mt25">
+				</div>
+			</li>
+			<li>
+				<div class="head">
+					<span class="imgbox"><img src="../image/layout/txt_11.png"></span>
+					<a href="#" class="btn_open"></a>
+				</div>
+				<div class="view imgbox">
+					<img src="../image/layout/benefit06_1.png">
+				</div>
+			</li>
+			<li>
+				<div class="head">
+					<span class="imgbox"><img src="../image/layout/txt_12.png"></span>
+					<a href="#" class="btn_open"></a>
+				</div>
+				<div class="view imgbox">
+					<img src="../image/layout/benefit07.png">
+				</div>
+			</li>
+		</ul>
+		<a href="06_premium02.html" class="btn_type2 mt25"><span class="btn_txt5"></span></a>
+	</div>
+</div>
+</body>
+</html>
