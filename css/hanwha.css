@@ -8,15 +8,19 @@ html,body{width:100%;height:100%;}
 .discript{text-indent:-999px;font-size:0;width:0;height:0;}
 .imgbox{position:relative;display:block;width:100%;line-height:0;}
 .imgbox img{width:100%;line-height:0;}
+/**190822_성우경_수정**S**/
+.imgbox p{font-size:18px; color:#f15949; line-height:1.4; letter-spacing:-1.7px; }
+/**190822_성우경_수정**E**/
+
 .btn_type1{display:block;height:50px;background:#f37321;}
 .btn_type1.round{border-radius:25px;}
 .w200t37{width:200px;margin:37px auto 0;}
 .w200t25{width:200px;margin:25px auto;}
 .w200t20{width:200px;margin:20px auto 0;border-radius:25px;}
 .btn_type2{margin:25px 22px;display:block;width:calc(100% - 44px);height:50px;border-radius:25px;background:#404448;}
-/**190819_성우경_추가**S**/
-.btn_type2.orange{background:#f37321;}
-/**190819_성우경_추가**E**/
+/**190819_성우경_수정**S**/
+.btn_type2.orange{background:#f37321; color:#fff; font-size:18px;}
+/**190819_성우경_수정**E**/
 .btn_type2.mauto{margin:15px 0;width:100%;}
 .btn_type3{margin:30px 0 0;display:block;width:100%;height:50px;border-radius:25px;background:#231f20;}
 .btn_type4{display:block;height:50px;background:#f15949;}
@@ -25,6 +29,9 @@ html,body{width:100%;height:100%;}
 .btn_m_txt1{display:block;height:50px;background:url(../image/layout/btn_main_txt.png) no-repeat center center;background-size:315px 16px;}
 .btn_m_txt2{display:block;height:50px;background:url(../image/layout/btn_main_txt2.png) no-repeat center center;background-size:323px 16px;}
 .btn_m_txt3{display:block;height:50px;background:url(../image/layout/btn_main_txt3.png) no-repeat center center;background-size:267px 16px;}
+/**190819_성우경_수정**S**/
+.btn_m_txt4{display:block;height:50px;background:url(../image/layout/btn_main_txt4.png) no-repeat center center;background-size:321px 16px;}
+/**190819_성우경_수정**E**/
 .btn_txt2{display:block;height:50px;background:url(../image/layout/btn_step1_txt.png) no-repeat center center;background-size:138px 16px;}
 .btn_txt3{display:block;height:50px;background:url(../image/layout/btn_txt_01.png) no-repeat center center;background-size:140px 17px;}
 .kakao{display:block;height:50px;background:url(../image/layout/kakao.png) no-repeat center center;background-size:129px 24px;}
@@ -161,6 +168,11 @@ input[type=radio]:checked + label.gender_w:before{background:url(../image/common
 .plane .databox span{float:left;line-height:33px;}
 i{font-style:normal!important;font-size:17px;}
 
+/**190823_성우경_추가**S**/
+.plane .txt_ex{font-size:14px; color:#937c6e; line-height:21px;}
+.plane .txt_ex span{font-size:14px; line-height:21px;}
+/**190823_성우경_추가**E**/
+
 .pay{margin-top:6px;padding:20px 12px;background:#e2dbd5;}
 .pay span{font-size:18px;color:#231f20;line-height:30px;}
 
@@ -269,7 +281,9 @@ input[type=checkbox]:checked + label:after{content:'';position:absolute;right:4p
     .answer  input[type=radio] + label{padding:0 150px 0 25px;font-size:17px;line-height:25px;color:#fff;box-sizing:border-box;letter-spacing:-0.05em;}/*20190812 수정*/
     .answer  input[type=radio] + label:before{content:'';position:absolute;left:0;top:calc(50% - 8px);width:16px;height:16px;border-radius:8px;box-sizing:border-box;background:#fff;overflow:hidden;}
     .answer  input[type=radio]:checked + label:after{content:'';position:absolute;left:3px;top:calc(50% - 5px);width:10px;height:10px;border-radius:5px;background:#937c6e;}
-
+    /**190823_성우경_수정**S**/
+    .imgbox p{letter-spacing:-2px;}
+    /**190822_성우경_수정**E**/
 }
 
 @media screen and (min-width:540px){
@@ -278,6 +292,11 @@ input[type=checkbox]:checked + label:after{content:'';position:absolute;right:4p
     .answer  input[type=radio] + label{padding:0 160px 0 25px;font-size:17px;line-height:25px;color:#fff;box-sizing:border-box;}
     .answer  input[type=radio] + label:before{content:'';position:absolute;left:0;top:calc(50% - 8px);width:16px;height:16px;border-radius:8px;box-sizing:border-box;background:#fff;overflow:hidden;}
     .answer  input[type=radio]:checked + label:after{content:'';position:absolute;left:3px;top:calc(50% - 5px);width:10px;height:10px;border-radius:5px;background:#937c6e;}
+    /**190823_성우경_수정**S**/
+    .imgbox p{font-size:30px; letter-spacing:-4px;  }
+    /**190823_성우경_수정**E**/
+
+   
 
 }
 @media screen and (min-width:640px){
@@ -300,6 +319,9 @@ input[type=checkbox]:checked + label:after{content:'';position:absolute;right:4p
     .btn_m_txt1{height:100px;background:url(../image/layout/btn_main_txt.png) no-repeat center center;background-size:630px 32px;}
     .btn_m_txt2{height:100px;background:url(../image/layout/btn_main_txt2.png) no-repeat center center;background-size:646px 32px;}
     .btn_m_txt3{height:100px;background:url(../image/layout/btn_main_txt3.png) no-repeat center center;background-size:534px 32px;}
+    /**190819_성우경_수정**S**/
+    .btn_m_txt4{height:100px;background:url(../image/layout/btn_main_txt4.png) no-repeat center center;background-size:643px 32px;}
+    /**190819_성우경_수정**E**/
     .btn_txt1{height:100px;background-size:258px 32px;}
     .btn_txt2{height:100px;background-size:276px 32px;}
     .btn_txt3{height:100px;background-size:280px 34px;}
@@ -413,6 +435,11 @@ input[type=checkbox]:checked + label:after{content:'';position:absolute;right:4p
     .plane .databox input[type=number],.plane .databox input[type=text]{width:150px;height:66px;font-size:34px;}
     .plane .databox span{float:left;line-height:66px;}
     i {font-size: 34px;}
+    /**190823_성우경_추가**S**/
+    .plane .txt_ex{font-size:28px; line-height:42px;}
+    .plane .txt_ex span{line-height:42px; font-size:28px;}
+    /**190823_성우경_추가**E**/
+    
 
     .pay{margin-top:12px;padding:40px 20px;}
     .pay span{font-size:36px;line-height:60px;}
@@ -495,6 +522,12 @@ input[type=checkbox]:checked + label:after{content:'';position:absolute;right:4p
     /**190819_성우경_추가**S**/
     .insurance_info{padding:50px 0;}
     .insurance_info p{ font-size:26px;}
+    /**190819_성우경_추가**E**/
+    /**190822_성우경_추가**S**/
+    .btn_type2.orange{font-size:36px;}
+    /**190822_성우경_추가**E**/
+    /**190819_성우경_추가**S**/
+    .imgbox p{font-size:36px;}
     /**190819_성우경_추가**E**/
 }
 
